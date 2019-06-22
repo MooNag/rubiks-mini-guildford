@@ -27,15 +27,14 @@ public class main {
 	
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
-		final long startTime = System.nanoTime();
+		long startTime = System.nanoTime();
 		
 		new Solve(new Player[] {
 				new Player(owen, "owen"),
 				new Player(max, "max"),
 				new Player(john, "john"),
-				new Player(Sebastian, "Sebastian"),
+				//new Player(Sebastian, "Sebastian"),
 				new Player(squasome, "squasome"),
 				//new Player(redTop, "redTop"),
 				//new Player(Tak, "Tak"),
@@ -56,12 +55,13 @@ public class main {
 				//new Player(akanearcane, "akanearcane"),
 				//new Player(MJ, "MJ"),
 				},
-				0 //TODO the event switch penalty is 0 right now
-				); 
+				2.0 //This is the event switch penalty
+				);
 		
-		final long endTime = System.nanoTime();
+		long endTime = System.nanoTime();
 		
-		System.out.println("\n\nTime taken to solve: " + (endTime - startTime) / 1000000000.0);
+		System.out.println("\nTime taken to solve: " + (endTime - startTime) / 1000000000.0);
+		
 		
 	}
 

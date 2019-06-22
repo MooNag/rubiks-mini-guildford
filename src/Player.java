@@ -7,17 +7,19 @@ public class Player {
 	
 	
 		public Map<String, Double> times = new HashMap<> ();
+		public Map<String, Double> times_processed = new HashMap<> ();
+		
 		public double[] timingsRaw;
 		
 		public String name;
 	
 		//These values are used for extra meta-data
 		public double penalty = 0;
+		public double time = 0;
 		public int event_count = 0;
 	
 		public Player (double[] timings, String name) {
 			
-			/*
 			double[] timesFixed = timings;
 			
 			//For any event that has no data, set the value to max value.
@@ -27,19 +29,17 @@ public class Player {
 					timesFixed[i] = 9999999d;
 				}
 			}
-			*/
 			
-			times.put("2x2", timings[0]);
-			times.put("3x3", timings[1]);
-			times.put("4x4", timings[2]);
-			times.put("5x5", timings[3]);
-			times.put("OH", timings[4]);
-			times.put("Mega", timings[5]);
-			times.put("pyramid", timings[6]);
-			times.put("square one", timings[7]);
-			times.put("clock", timings[8]);
-			times.put("skewb", timings[9]);
-			
+			times.put("2x2", timesFixed[0]);
+			times.put("3x3", timesFixed[1]);
+			times.put("4x4", timesFixed[2]);
+			times.put("5x5", timesFixed[3]);
+			times.put("OH", timesFixed[4]);
+			times.put("Mega", timesFixed[5]);
+			times.put("pyramid", timesFixed[6]);
+			times.put("square one", timesFixed[7]);
+			times.put("clock", timesFixed[8]);
+			times.put("skewb", timesFixed[9]);
 			
 			this.name = name;
 			
