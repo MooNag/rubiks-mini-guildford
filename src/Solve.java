@@ -53,18 +53,19 @@ public class Solve {
 			//Add one to the first element in the first array
 			combinations[0]++;
 			
+			//Do the logic that is required for "bit-shifting"
 			for(int i = 0; i < combinations.length - 1; i++) {
 				//If any element on the array is overflowing, move it to the next one
 				if(combinations[i] >= players.length) {
-					
+					//Shift over the "bit"
 					combinations[i] = 0;
 					combinations[i+1] += 1;
-					
-					//Break out of loop if the top most value is greater than players length.
-					if(combinations[test_situation.events_array.length - 1] >= players.length) {
-						break whileLoop;
-					}
 				}
+			}
+			
+			//Break out of loop if the top most value is greater than players length.
+			if(combinations[test_situation.events_array.length - 1] >= players.length) {
+				break whileLoop;
 			}
 			
 			
@@ -86,15 +87,39 @@ public class Solve {
 			test_situation.map.put("skewb", players[combinations[9]]);
 			
 			
+			//Check if a single player's event's time is greater than the current best situation.
+			//If that is true, there is no possible way this situation is faster. Therefore skip
+			//all of the expensive calculations.
+			for(int i = 0; i < test_situation.events_array.length; i++) {
+				
+				if(test_situation.map.get(test_situation.events_array[i]).times.get(test_situation.events_array[i]) > best_situation_time) {
+					
+					//Continue to the next player for this event.
+					//Take the last overflowed index in the array, and increment it.
+					combinations[i] += 1;
+					
+					//Set all of the values less than the index to zero.
+					for(int x = i - 1; x > 0; x--) {
+						combinations[x] = 0;
+					}
+					
+					//printByteArray(combinations);
+					//System.out.println("Continuing...");
+					
+					//Continue to the next iteration with the jumped values.
+					continue whileLoop;
+				}
+			
+				//System.out.println(i);
+			}
+			
 			double time_for_situation = test_situation.calculateTime(players);
 			
-			synchronized (this) {
-				//Check if this solution is faster than the current fastest
-				if(time_for_situation < best_situation_time) {
-					best_situation = new Situation (test_situation.map, event_switch_penalty);
-					best_situation_time = best_situation.calculateTime(players);
-					//printSituation(best_situation, players);
-				}
+			//Check if this solution is faster than the current fastest
+			if(time_for_situation < best_situation_time) {
+				best_situation = new Situation (test_situation.map, event_switch_penalty);
+				best_situation_time = best_situation.calculateTime(players);
+				//printSituation(best_situation, players);
 			}
 			
 			

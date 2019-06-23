@@ -23,7 +23,7 @@ public class main {
 	public static double[] ben = {3, 8.9, 41, 90, 20, 110, 3.5, 12, 14, 3.9};
 	public static double[] jo = {4.3, 11, 47.5, 102, 19, 85, 5, 28, 24, 8.5};
 	public static double[] akanearcane = {3, 10, 50, 110, 18, 65, 7, 0, 12, 5};
-	public static double[] MJ = {4,11,50,100,24,0,0,0,0,0};
+	public static double[] MJ = {4, 11, 50, 100, 24, 0, 0, 0, 0, 0};
 	
 
 	public static void main(String[] args) {
@@ -38,7 +38,7 @@ public class main {
 				new Player(squasome, "squasome"),
 				//new Player(redTop, "redTop"),
 				//new Player(Tak, "Tak"),
-				//new Player(Jami, "Jami"),
+				new Player(Jami, "Jami"),
 				//new Player(Kerry, "Kerry"),
 				//new Player(Maxmill, "Maxmill"),
 				//new Player(Parke, "Parke"),
@@ -60,7 +60,7 @@ public class main {
 		
 		long endTime = System.nanoTime();
 		
-		System.out.println("\nTime taken to solve: " + (endTime - startTime) / 1000000000.0);
+		System.out.println("\nSolve time: " + (endTime - startTime) / 1000000000.0);
 		
 		
 	}

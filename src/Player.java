@@ -7,9 +7,6 @@ public class Player {
 	
 	
 		public Map<String, Double> times = new HashMap<> ();
-		public Map<String, Double> times_processed = new HashMap<> ();
-		
-		public double[] timingsRaw;
 		
 		public String name;
 	
@@ -26,7 +23,7 @@ public class Player {
 			for(int i = 0; i < timesFixed.length; i++) {
 				if(timesFixed[i] == 0) {
 					//Set it to a really large number to make the run useless
-					timesFixed[i] = 9999999d;
+					timesFixed[i] = 999999;
 				}
 			}
 			

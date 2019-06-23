@@ -29,6 +29,7 @@ public class Situation {
 		//Loop through each event and see if that player is doing that event
 		for(int x = 0; x < events_array.length; x++) {
 			if(map.get(events_array[x]) == player) {
+				
 				player_time += player.times.get(events_array[x]);
 				event_count++;
 				//System.out.println(players_array[i].times.get(array[x]));
@@ -56,6 +57,10 @@ public class Situation {
 	}
 	
 	
+	
+	
+	
+	
 	void print (Player[] players) {
 		
 		double total = calculateTime(players);
@@ -66,34 +71,44 @@ public class Situation {
 		//For each player doing events.
 		for(int i = 0; i < events_array.length; i++) {
 			
-			System.out.println("Event: " + events_array[i] + " - Player: " + map.get(events_array[i]).name + " (events: " + map.get(events_array[i]).event_count + ") - Time: " + map.get(events_array[i]).times.get(events_array[i]));
+			System.out.println(events_array[i] + ": " + map.get(events_array[i]).name + " (" + map.get(events_array[i]).times.get(events_array[i]) + ")");
 			
 		}
 		
-		System.out.print("\nPlayers: ");
+		System.out.println("\nPlayers: ");
 		
 		//For each player doing events.
 		for(int i = 0; i < players.length; i++) {
 			
-			//This makes the printout nice and only shows the comma if
-			//it is not the last player in the list
-			String suffix = ", ";
-			if(i == players.length - 1) {
-				suffix = "";
+			String events_list = "[";
+			int event_count = 0;
+			
+			//Loop through each event and see if that player is doing that event
+			for(int x = 0; x < events_array.length; x++) {
+				if(map.get(events_array[x]) == players[i]) {
+					event_count++;
+					events_list += events_array[x] + "(" + players[i].times.get(events_array[x]) + ")" + ", ";
+					
+				}
 			}
+			
+			//Jank: Remove the last comma.
+			events_list = events_list.substring(0, events_list.length()-2);
+			
+			events_list += "]";
 			
 			//Get the players total time.
 			double player_time = getPlayerTime(players[i]);
 			
 			//If their total time is zero, they have no events assigned to them.
 			if(player_time == 0) {
-				System.out.print(players[i].name + ": NO EVENTS" + suffix);
+				System.out.println(players[i].name + ": NO EVENTS");
 			} else {
-				System.out.print(players[i].name + ": " + player_time + suffix);
+				System.out.println(players[i].name + " " + event_count + " event(s): " + player_time + " seconds total -> " + events_list);
 			}
 		}
 		
-		System.out.println("\nTime: " + total + " seconds for " + events_array.length + " events");
+		System.out.println("\nTime: " + total + " seconds for " + events_array.length + " events with an event switch penalty of " + event_switch_penalty + " seconds");
 	}
 	
 	
