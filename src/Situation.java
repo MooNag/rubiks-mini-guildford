@@ -93,7 +93,9 @@ public class Situation {
 			}
 			
 			//Jank: Remove the last comma.
-			events_list = events_list.substring(0, events_list.length()-2);
+			if(event_count > 0) {
+				events_list = events_list.substring(0, events_list.length()-2);
+			}
 			
 			events_list += "]";
 			
@@ -104,7 +106,7 @@ public class Situation {
 			if(player_time == 0) {
 				System.out.println(players[i].name + ": NO EVENTS");
 			} else {
-				System.out.println(players[i].name + " " + event_count + " event(s): " + player_time + " seconds total -> " + events_list);
+				System.out.println(players[i].name + ": " + event_count + " event(s) " + player_time + " seconds total " + events_list);
 			}
 		}
 		

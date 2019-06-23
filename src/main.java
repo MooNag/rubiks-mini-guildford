@@ -49,7 +49,7 @@ public class main {
 				//new Player(will, "will"),
 				//new Player(peter, "peter"),
 				//new Player(wigs, "wigs"),
-				//new Player(lucas, "lucas"),
+				new Player(lucas, "lucas"),
 				//new Player(ben, "ben"),
 				//new Player(jo, "jo"),
 				//new Player(akanearcane, "akanearcane"),
